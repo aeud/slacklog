@@ -1,15 +1,12 @@
 package main
 
 import (
-	"io/ioutil"
-	"log"
+	"io"
 	"os"
 
-	_ "github.com/aeud/slackout"
+	"github.com/aeud/slackout"
 )
 
 func main() {
-	bs, _ := ioutil.ReadAll(os.Stdin)
-
-	log.Printf("%s", bs)
+	io.Copy(slackout.W, os.Stdin)
 }
